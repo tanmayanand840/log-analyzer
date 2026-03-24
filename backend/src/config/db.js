@@ -9,10 +9,16 @@ const connectDB = async () => {
   }
 
   try {
-    await mongoose.connect(mongoUri);
+    await mongoose.connect(mongoUri, {
+      serverSelectionTimeoutMS: 15000,
+      maxPoolSize: 10,
+    });
     console.log("MongoDB connected");
   } catch (error) {
     console.error("MongoDB connection failed:", error.message);
+    console.error(
+      "Check MONGODB_URI, MongoDB Atlas Network Access, and database user credentials.",
+    );
   }
 };
 
