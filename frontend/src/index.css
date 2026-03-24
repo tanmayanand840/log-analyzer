@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+  color: #0a2038;
+  background:
+    radial-gradient(circle at top left, #fff1d9 0%, rgba(255, 241, 217, 0) 28%),
+    radial-gradient(circle at top right, #d7ebff 0%, rgba(215, 235, 255, 0) 35%),
+    linear-gradient(160deg, #edf6ff 0%, #f8fbff 42%, #eef7ff 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100vh;
+}
