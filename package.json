@@ -1,0 +1,13 @@
+{
+  "name": "sisa-assignment",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Monorepo wrapper scripts for Render deployment",
+  "scripts": {
+    "build": "npm install --prefix backend",
+    "start": "npm start --prefix backend"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
