@@ -796,7 +796,7 @@ textarea {
   border-radius: 18px;
   padding: 0.55rem;
   max-height: 320px;
-  overflow: hidden;
+  overflow: auto;
   font-family: "JetBrains Mono", Consolas, monospace;
   font-size: 0.86rem;
   background: linear-gradient(180deg, rgba(241, 248, 255, 0.92), rgba(232, 243, 255, 0.82));
