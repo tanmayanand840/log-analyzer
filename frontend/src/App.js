@@ -6,11 +6,20 @@ import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 
-const apiBaseUrl =
-  process.env.REACT_APP_API_URL ||
-  (window.location.hostname === "localhost"
+const resolveApiBaseUrl = () => {
+  const rawEnvUrl = process.env.REACT_APP_API_URL?.trim();
+
+  if (rawEnvUrl) {
+    const cleaned = rawEnvUrl.replace(/\/+$/, "");
+    return cleaned.endsWith("/api") ? cleaned : `${cleaned}/api`;
+  }
+
+  return window.location.hostname === "localhost"
     ? "http://localhost:5000/api"
-    : "/api");
+    : "/api";
+};
+
+const apiBaseUrl = resolveApiBaseUrl();
 
 const parseApiResponse = async (response) => {
   const contentType = response.headers.get("content-type") || "";
