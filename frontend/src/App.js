@@ -6,7 +6,32 @@ import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 
-const apiBaseUrl = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+const apiBaseUrl =
+  process.env.REACT_APP_API_URL ||
+  (window.location.hostname === "localhost"
+    ? "http://localhost:5000/api"
+    : "/api");
+
+const parseApiResponse = async (response) => {
+  const contentType = response.headers.get("content-type") || "";
+  const bodyText = await response.text();
+
+  if (contentType.includes("application/json")) {
+    try {
+      return bodyText ? JSON.parse(bodyText) : {};
+    } catch {
+      throw new Error("Server returned invalid JSON response.");
+    }
+  }
+
+  if (!response.ok) {
+    throw new Error(
+      `Request failed (${response.status}). Check REACT_APP_API_URL and backend deployment.`,
+    );
+  }
+
+  throw new Error("Expected JSON response but received non-JSON content.");
+};
 
 function App() {
   const [token, setToken] = useState(() => localStorage.getItem("token") || "");
@@ -38,7 +63,7 @@ function App() {
       return;
     }
 
-    const data = await response.json();
+    const data = await parseApiResponse(response);
     setHistory(data.analyses || []);
   };
 
@@ -59,7 +84,7 @@ function App() {
         return;
       }
 
-      const data = await response.json();
+      const data = await parseApiResponse(response);
       setCurrentUser(data.user);
       await fetchHistory(token);
     };
@@ -78,7 +103,7 @@ function App() {
         body: JSON.stringify(payload),
       });
 
-      const data = await response.json();
+      const data = await parseApiResponse(response);
       if (!response.ok) {
         throw new Error(data.message || "Authentication failed");
       }
@@ -114,7 +139,7 @@ function App() {
       }),
     });
 
-    const data = await response.json();
+    const data = await parseApiResponse(response);
     if (!response.ok) {
       throw new Error(data.message || "Unable to analyze content");
     }
