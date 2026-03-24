@@ -17,3 +17,16 @@ body {
 #root {
   min-height: 100vh;
 }
+
+html,
+body,
+#root,
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
