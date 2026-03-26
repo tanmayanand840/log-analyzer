@@ -336,10 +336,11 @@
 .label {
   display: block;
   margin-top: 0.15rem;
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  color: var(--ink-900);
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #1f4a95;
+  text-transform: uppercase;
 }
 
 .auth-form input,
@@ -479,12 +480,17 @@ textarea {
 .topbar h1,
 .card h2 {
   margin: 0;
-  color: var(--ink-950);
+  color: #0d1b2e;
   letter-spacing: -0.03em;
+  font-weight: 900;
 }
 
 .topbar h1 {
   font-size: clamp(1.45rem, 3vw, 2rem);
+  background: linear-gradient(135deg, #1f4a95 0%, #0ea5d8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .topbar p {
@@ -567,7 +573,9 @@ textarea {
 }
 
 .card h2 {
-  font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+  font-size: clamp(1.3rem, 2.8vw, 1.8rem);
+  color: #1f4a95;
+  margin-bottom: 0.5rem;
 }
 
 .dropzone {
@@ -596,14 +604,16 @@ textarea {
 
 .dropzone p {
   margin: 0;
-  font-weight: 700;
-  color: var(--ink-900);
+  font-weight: 800;
+  color: #1f4a95;
+  font-size: 1rem;
 }
 
 .dropzone span {
   display: block;
-  margin: 0.45rem 0 0.7rem;
-  color: var(--ink-500);
+  margin: 0.5rem 0 0.8rem;
+  color: #4a5f7f;
+  font-weight: 600;
 }
 
 .file-btn {
@@ -626,21 +636,24 @@ textarea {
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  border: 1px solid rgba(149, 180, 212, 0.38);
-  border-radius: 16px;
-  padding: 0.82rem 0.9rem;
-  background: rgba(250, 252, 255, 0.72);
-  color: var(--ink-900);
+  border: 1.2px solid rgba(31, 74, 149, 0.24);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(245, 250, 255, 0.88));
+  color: #1f4a95;
+  font-weight: 600;
   transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    background-color 0.2s ease;
+    transform 0.24s ease,
+    border-color 0.24s ease,
+    background-color 0.24s ease,
+    box-shadow 0.24s ease;
 }
 
 .options-row label:hover {
-  transform: translateX(2px);
-  border-color: rgba(37, 99, 235, 0.4);
-  background: rgba(255, 255, 255, 0.92);
+  transform: translateX(4px);
+  border-color: rgba(31, 74, 149, 0.6);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(225, 240, 255, 0.92));
+  box-shadow: 0 6px 16px rgba(31, 74, 149, 0.12);
 }
 
 .options-row input[type="checkbox"] {
@@ -685,8 +698,21 @@ textarea {
 }
 
 .metric-grid article {
-  border-radius: 18px;
-  padding: 0.95rem;
+  border-radius: 16px;
+  padding: 1.2rem;
+  background: linear-gradient(135deg, rgba(31, 74, 149, 0.04) 0%, rgba(14, 165, 216, 0.04) 100%) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.metric-grid article::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #1f4a95, #0ea5d8, #f97316);
 }
 
 .metric-grid h3,
@@ -694,39 +720,57 @@ textarea {
 .findings-card h3,
 .log-viewer h3 {
   margin: 0;
-  color: var(--ink-900);
+  color: #1f4a95;
+  font-weight: 800;
+  font-size: 1.05rem;
 }
 
 .metric-grid p {
-  margin: 0.4rem 0 0;
-  font-weight: 800;
-  color: var(--ink-950);
+  margin: 0.5rem 0 0;
+  font-weight: 900;
+  color: #0d1b2e;
+  font-size: 1.2rem;
 }
 
 .summary-card,
 .findings-card,
 .log-viewer {
-  margin-top: 0.9rem;
-  padding: 0.95rem;
-  border-radius: 20px;
+  margin-top: 1rem;
+  padding: 1.3rem;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.94), rgba(245, 250, 255, 0.82)) !important;
 }
 
 .summary-card p,
 .summary-card li,
 .findings-card p,
 .log-viewer p {
-  line-height: 1.65;
+  line-height: 1.7;
+  color: #253d52;
+  font-weight: 500;
+}
+
+.summary-card p,
+.findings-card p {
+  font-size: 0.98rem;
 }
 
 .summary-card ul {
-  margin: 0.65rem 0 0;
-  padding-left: 1.1rem;
+  margin: 0.8rem 0 0;
+  padding-left: 1.3rem;
+}
+
+.summary-card li {
+  margin: 0.5rem 0;
+  color: #1f4a95;
+  font-weight: 600;
 }
 
 .source {
   margin: 0.35rem 0 0;
-  color: var(--ink-700);
-  font-size: 0.9rem;
+  color: #0ea5d8;
+  font-size: 0.88rem;
+  font-weight: 700;
 }
 
 .history-list,
@@ -758,20 +802,23 @@ textarea {
   justify-content: space-between;
   gap: 0.8rem;
   align-items: flex-start;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(245, 250, 255, 0.88)) !important;
 }
 
 .history-summary,
 .f-type {
   margin: 0;
-  font-weight: 700;
-  color: var(--ink-950);
+  font-weight: 800;
+  color: #1f4a95;
+  font-size: 1rem;
 }
 
 .history-meta,
 .f-context {
-  margin: 0.28rem 0 0;
-  color: var(--ink-700);
-  font-size: 0.9rem;
+  margin: 0.35rem 0 0;
+  color: #4a5f7f;
+  font-size: 0.88rem;
+  font-weight: 500;
 }
 
 .chip {
